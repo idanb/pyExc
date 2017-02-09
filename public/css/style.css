@@ -1,0 +1,46 @@
+html { overflow-y:scroll; }
+body { padding-top:50px; background: url(0365dde9.png) repeat; }
+
+h1{
+    color: rgba(55, 88, 142, 0.73);
+}
+
+#scripts-list {
+    margin-bottom:30px;
+    min-height: 380px;
+}
+
+#scripts-list .script label{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+#scripts-list .script{
+padding: 0 3px;
+}
+
+#script-form {
+
+}
+.selected{
+    background: #a3d0ff;
+    color: #003054;
+    border-radius: 5px;
+}
+
+.form-group textarea{
+    margin-top: 10px;
+    min-height: 200px;
+}
+
+.form-group textarea,
+.form-group input{
+    padding: 5px;
+}
+.script-response{
+    color: #ff4534;
+}
+.script-response.success{
+    color: #48804b;
+}

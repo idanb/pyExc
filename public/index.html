@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="pyExecutor">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>pyExecutor</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	<script src="http://bootstrapdocs.com/v3.0.0/docs/assets/js/jquery.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="js/controllers/main.js"></script>
+	<script src="js/services/scripts.js"></script>
+	<script src="js/core.js"></script>
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+	<div class="container">
+        <h1 class="text-center">Python Script Runner</h1>
+		<div id="scripts-list" class="col-sm-2">
+            <div ng-repeat="script in scripts" class="script" ng-click="showScriptData($index)" ng-class="{selected: $index==selectedIndex}">
+                <label>
+                    {{ script.name }}
+                </label>
+            </div>
+		</div>
+
+		<div id="script-form" class="col-sm-10">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control input-md" placeholder="script name" ng-model="formData.name" ng-required="string" required="string"/>
+                    <textarea class="form-control input-md" placeholder="script text" ng-model="formData.script" ng-required="string" required="string"></textarea>
+                </div>
+            </form>
+		</div>
+
+        <div id="actions-panel" class="col-sm-10">
+            <button type="button" class="btn btn-default btn-sm" ng-click="createScript()">
+                <span class="glyphicon glyphicon-plus"></span> Save as New Script
+            </button>
+
+            <button type="button" class="btn btn-default btn-sm" ng-click="updateScript()">
+                <span class="glyphicon glyphicon-floppy-disk"></span> Update Script Changes
+            </button>
+
+            <button type="button" class="btn btn-default btn-sm" ng-click="runScript()">
+                <span class="glyphicon glyphicon-play-circle"></span> Run Script
+            </button>
+
+            <button type="button" class="btn btn-default btn-sm" ng-click="deleteScript()">
+                <span class="glyphicon glyphicon-remove"></span> Delete Script
+            </button>
+
+            <p class="text-center" ng-show="loading">
+                <span class="fa fa-spinner fa-spin fa-3x"></span>
+            </p>
+        </div>
+        <div class="script-response col-sm-10" ng-class="{success: response_type == 0}">{{response}}</div>
+	</div>
+</body>
+</html>
