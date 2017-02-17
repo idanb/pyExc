@@ -14,7 +14,7 @@ var PythonShell = require('python-shell');
 //app.use(haltOnTimedout);
 
 // configuration ===============================================================
-mongoose.connect(database.localUrl); 	// Connect to local MongoDB instance. A remoteUrl is also available (modulus.io)
+mongoose.connect(database.remoteUrl); 	// Connect to local MongoDB instance - localUrl . A remoteUrl is also available (modulus.io)
 
 app.use(express.static('./public')); 		// set the static files location /public/img will be /img for users
 app.use(morgan('dev')); // log every request to the console
@@ -23,10 +23,6 @@ app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
-
-//function haltOnTimedout(req, res, next){
-//    if (!req.timedout) next();
-//}
 // routes ======================================================================
 require('./app/routes.js')(app);
 
