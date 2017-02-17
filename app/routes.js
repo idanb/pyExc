@@ -91,8 +91,8 @@ module.exports = function (app) {
 
         // create a script, information comes from AJAX request from Angular
         Script.create({
-            script: req.body.script_text,
-            name: req.body.name
+            script: req.body.script,
+            name: req.body.name + "_copy"
         }, function (err, script) {
             if (err)
                 res.send(err);

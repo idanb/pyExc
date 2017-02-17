@@ -42,7 +42,7 @@ angular.module('scriptController', [])
                         $scope.response = 'Script created successfully';
 						$scope.loading = false;
 						$scope.formData = {}; // clear the form so our user is ready to enter another
-						$scope.scripts = data; // assign our new list of scripts
+						$scope.scripts = data.response; // assign our new list of scripts
 					}).error(errorCallback);
 			}
 		};
